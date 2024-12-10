@@ -9,7 +9,9 @@ public class PlayerController : MonoBehaviour
     
     Rigidbody rb;
     [SerializeField] bool isGrounded;
+    [SerializeField] bool canDoubleJump;
     [SerializeField] bool isGameOver = false;
+    [SerializeField] int jumpCount;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -22,11 +24,23 @@ public class PlayerController : MonoBehaviour
 
     // Update is called once per frame
     void Update()
+
     {
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             isGrounded = false;
+            canDoubleJump = true;
+        }
+
+        if (canDoubleJump)
+        {
+            if (Input.GetKeyDown(KeyCode.LeftShift))
+            {
+                //rb.AddForce(Vector3.up * 0.85f * jumpForce, ForceMode.Impulse);
+                rb.linearVelocity = Vector3.up * 1.15f * jumpForce;
+                canDoubleJump= false;
+            }
         }
 
         if (isGameOver)

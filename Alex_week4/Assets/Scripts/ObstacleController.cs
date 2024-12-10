@@ -14,7 +14,7 @@ public class ObstacleController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector3.left * obstacleSpeed * Time.deltaTime);
+        transform.Translate(Vector3.left * obstacleSpeed * Time.deltaTime, Space.World);
 
         if (transform.position.x <= xRange)
         {
