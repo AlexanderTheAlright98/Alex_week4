@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Obstacles
   - Rabbit
+  - Background
   layers:
   - Default
   - TransparentFX

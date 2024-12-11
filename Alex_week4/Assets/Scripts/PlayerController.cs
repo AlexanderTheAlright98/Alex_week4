@@ -5,20 +5,18 @@ public class PlayerController : MonoBehaviour
 {
 
     public float jumpForce = 5;
-    public Renderer rend;
-    
+    public bool isGameOver = false;
+
+    Animator playerAnim;
     Rigidbody rb;
     [SerializeField] bool isGrounded;
     [SerializeField] bool canDoubleJump;
-    [SerializeField] bool isGameOver = false;
-    [SerializeField] int jumpCount;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        rend = GetComponentInChildren<SkinnedMeshRenderer>();
-        rend.enabled = true;
+        playerAnim = GetComponent<Animator>();
         Time.timeScale = 1;
     }
 
@@ -26,8 +24,10 @@ public class PlayerController : MonoBehaviour
     void Update()
 
     {
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded && !isGameOver)
         {
+            playerAnim.SetTrigger("Jump_trig");
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             isGrounded = false;
             canDoubleJump = true;
@@ -37,7 +37,7 @@ public class PlayerController : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.LeftShift))
             {
-                //rb.AddForce(Vector3.up * 0.85f * jumpForce, ForceMode.Impulse);
+                playerAnim.SetTrigger("Jump_trig");
                 rb.linearVelocity = Vector3.up * 1.15f * jumpForce;
                 canDoubleJump= false;
             }
@@ -45,8 +45,9 @@ public class PlayerController : MonoBehaviour
 
         if (isGameOver)
         {
-            Time.timeScale = 0;
-            rend.enabled = false;
+            playerAnim.SetBool("Death_b", true);
+            playerAnim.SetInteger("DeathType_int", 1);
+            Time.timeScale = 0.25f;
 
             if (Input.GetKeyDown(KeyCode.R))
             {

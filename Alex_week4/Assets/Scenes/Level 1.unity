@@ -326,13 +326,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 534669902}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
   m_LocalPosition: {x: 8, y: 4, z: -15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
 --- !u!114 &534669906
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -391,7 +391,7 @@ GameObject:
   - component: {fileID: 835818923}
   m_Layer: 9
   m_Name: Background
-  m_TagString: Background
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -440,8 +440,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 66ce0fda7508547d2be6b20eac53f119, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 17881b719d84f46169e88d04d594eb75, type: 3}
+  m_Color: {r: 0.8018868, g: 0.26099145, b: 0.26099145, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -545,11 +545,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obstaclePrefabs:
-  - {fileID: 2306362503223171380, guid: d7a53332281f72f49b6fb45149c27231, type: 3}
-  - {fileID: 3571497567051959329, guid: 9f7d13a752da32e43b00050f09147c01, type: 3}
+  - {fileID: 1584979699611851564, guid: 887801a7ef0a81d4aa2e8efe7ed23da6, type: 3}
   - {fileID: 7185454687496934906, guid: 9589c228020e2c746821b3da44c13397, type: 3}
-  - {fileID: 5928809487219086439, guid: ceb5b4d7950b140479550ec35c56cb55, type: 3}
-  - {fileID: 1263797507998105003, guid: b6055e50c15363049bcb22b0c1fd0def, type: 3}
   rabbitPrefab: {fileID: 454161939190948524, guid: 161b6e1ef536fb544944c35197ebfe65, type: 3}
   startDelay: 2.5
 --- !u!1001 &899800686
@@ -623,7 +620,7 @@ PrefabInstance:
       addedObject: {fileID: 1354849265}
     - targetCorrespondingSourceObject: {fileID: 100000, guid: b186f9485a0828b468f98fe846ae1a68, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1354849270}
+      addedObject: {fileID: 1354849268}
   m_SourcePrefab: {fileID: 100100000, guid: b186f9485a0828b468f98fe846ae1a68, type: 3}
 --- !u!1 &1338026387
 GameObject:
@@ -745,7 +742,7 @@ CapsuleCollider:
   m_Height: 3.2984269
   m_Direction: 1
   m_Center: {x: -0.01572609, y: 1.5275263, z: 1.4366208e-18}
---- !u!114 &1354849270
+--- !u!114 &1354849268
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -820,7 +817,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5165c0088453c534698f1fc69c5e847e, type: 2}
+  - {fileID: 2100000, guid: 8c9a65a7ca6fd0140a017b5746e1d2ee, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

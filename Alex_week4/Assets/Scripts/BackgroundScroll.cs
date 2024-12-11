@@ -3,7 +3,7 @@ using UnityEngine;
 public class BackgroundScroll : MonoBehaviour
 {
     Vector3 startPos;
-    [SerializeField] float scrollSpeed;
+    public float scrollSpeed;
     float backgroundWidth;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -17,7 +17,10 @@ public class BackgroundScroll : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(scrollSpeed * Time.deltaTime, 0, 0);
+        if (!GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().isGameOver)
+        {
+            transform.Translate(scrollSpeed * Time.deltaTime, 0, 0);
+        }
 
         if (transform.position.x < startPos.x - (backgroundWidth / 2))
         {
