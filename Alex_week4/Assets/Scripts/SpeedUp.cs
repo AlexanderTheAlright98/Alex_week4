@@ -11,14 +11,17 @@ public class SpeedUp : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.D))
+        if (!GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().isGameOver)
         {
-            Time.timeScale = 2;
-        }
+            if (Input.GetKey(KeyCode.D))
+            {
+                Time.timeScale = 2;
+            }
 
-        else
-        {
-            Time.timeScale = 1;
+            else
+            {
+                Time.timeScale = 1;
+            }
         }
     }
 }

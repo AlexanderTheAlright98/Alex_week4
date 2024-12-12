@@ -6,7 +6,10 @@ public class PlayerController : MonoBehaviour
 
     public float jumpForce = 5;
     public bool isGameOver = false;
+    public ParticleSystem dirtParticle;
+    public AudioClip jumpNoise1, jumpNoise2, deathNoise;
 
+    AudioSource playerAudioSource;
     Animator playerAnim;
     Rigidbody rb;
     [SerializeField] bool isGrounded;
@@ -17,6 +20,7 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         playerAnim = GetComponent<Animator>();
+        playerAudioSource = GetComponent<AudioSource>();
         Time.timeScale = 1;
     }
 
@@ -31,6 +35,8 @@ public class PlayerController : MonoBehaviour
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             isGrounded = false;
             canDoubleJump = true;
+            playerAudioSource.PlayOneShot(jumpNoise1);
+            dirtParticle.Stop();
         }
 
         if (canDoubleJump)
@@ -40,6 +46,7 @@ public class PlayerController : MonoBehaviour
                 playerAnim.SetTrigger("Jump_trig");
                 rb.linearVelocity = Vector3.up * 1.15f * jumpForce;
                 canDoubleJump= false;
+                playerAudioSource.PlayOneShot(jumpNoise2);
             }
         }
 
@@ -47,7 +54,9 @@ public class PlayerController : MonoBehaviour
         {
             playerAnim.SetBool("Death_b", true);
             playerAnim.SetInteger("DeathType_int", 1);
+            playerAudioSource.PlayOneShot(deathNoise);
             Time.timeScale = 0.25f;
+            dirtParticle.Stop();
 
             if (Input.GetKeyDown(KeyCode.R))
             {
@@ -60,6 +69,7 @@ public class PlayerController : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         isGrounded = true;
+        dirtParticle.Play();
 
         if (collision.collider.tag == "Obstacles")
         {
