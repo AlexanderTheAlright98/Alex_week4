@@ -13,7 +13,7 @@ public class SpawnManager : MonoBehaviour
         float spawnInterval = Random.Range(1.95f, 3.25f);
         InvokeRepeating("ObstacleSpawning", startDelay, spawnInterval);
         float rabbitSpawnInterval = Random.Range(4, 10);
-        InvokeRepeating("RabbitSpawning", startDelay * 3, rabbitSpawnInterval);
+        InvokeRepeating("RabbitSpawning", startDelay * 7, rabbitSpawnInterval);
     }
 
     // Update is called once per frame
