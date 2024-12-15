@@ -15,13 +15,6 @@ public class SpawnManager : MonoBehaviour
         float rabbitSpawnInterval = Random.Range(4, 10);
         InvokeRepeating("RabbitSpawning", startDelay * 7, rabbitSpawnInterval);
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     void ObstacleSpawning()
     {
         int randomIndex = Random.Range(0, obstaclePrefabs.Length);
@@ -36,7 +29,7 @@ public class SpawnManager : MonoBehaviour
     {
         if (!GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().isGameOver)
         {
-            Vector3 randomSpawn2 = new Vector3(Random.Range(19, 30), 6.1f, 0);
+            Vector3 randomSpawn2 = new Vector3(Random.Range(19, 30), Random.Range(5.1f, 7.3f), 0);
             Instantiate(rabbitPrefab, randomSpawn2, Quaternion.Euler(0, 90, 0));
         }
     }

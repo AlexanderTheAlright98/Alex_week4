@@ -10,6 +10,7 @@ TagManager:
   - Bomb
   - Money
   - Ground
+  - Chair
   layers:
   - Default
   - TransparentFX

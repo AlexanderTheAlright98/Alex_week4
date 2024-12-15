@@ -1,13 +1,16 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
 
     public float jumpForce = 5;
     public bool isGameOver = false;
+    public bool deathNoisePlayed = false;
     public ParticleSystem dirtParticle;
     public AudioClip jumpNoise1, jumpNoise2, deathNoise;
+    public TMP_Text gameoverTXT;
 
     AudioSource playerAudioSource;
     Animator playerAnim;
@@ -52,15 +55,22 @@ public class PlayerController : MonoBehaviour
 
         if (isGameOver)
         {
+            gameoverTXT.text = "GAME OVER. Or is it? Press 'R' to continue your trip.";
             playerAnim.SetBool("Death_b", true);
             playerAnim.SetInteger("DeathType_int", 1);
-            playerAudioSource.PlayOneShot(deathNoise);
             Time.timeScale = 0.25f;
             dirtParticle.Stop();
 
+            if (!deathNoisePlayed)
+            {
+                playerAudioSource.PlayOneShot(deathNoise);
+                deathNoisePlayed = true;
+            }
+
             if (Input.GetKeyDown(KeyCode.R))
             {
-                SceneManager.LoadScene(0);
+                int sceneIndex = Random.Range(1, 7);
+                SceneManager.LoadScene(sceneIndex);
             }
 
         }
